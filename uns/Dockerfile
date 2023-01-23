@@ -6,4 +6,4 @@ ARG JAR_FILE= ./*.jar
 
 COPY ./uns.jar uns.jar
 
-ENTRYPOINT ["java","-jar","/uns.jar" ]
+CMD ["java","-jar","/uns.jar" ]
