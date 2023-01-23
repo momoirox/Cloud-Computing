@@ -24,7 +24,7 @@ public class StudentController {
     
     private final StudentService studentService;
 
-    @PostMapping
+    @PostMapping()
     public  ResponseEntity<RegisterDto> save(@RequestBody RegisterDto  registerDto){
         
         Student student = studentService.save(registerDto);
