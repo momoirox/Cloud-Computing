@@ -40,7 +40,7 @@ def index(request):
                     st.save()
                     response = "Sudent registered ."
                 elif(response.status_code == 409):
-                    response = "Student allre  ady exists."
+                    response = "Student allready exists."
                 else : 
                     response = "Internal server error. Sorry, try again :( ."
 
