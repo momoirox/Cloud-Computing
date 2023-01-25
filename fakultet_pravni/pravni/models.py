@@ -7,6 +7,7 @@ class Professor(models.Model):
     name = models.CharField(max_length=60)
     surname = models.CharField(max_length=100)
     jmbg = models.CharField(max_length=20)
+    image = models.ImageField(blank=True, upload_to='images')
 
     def __str__(self) -> str:
         return f' {self.name} - {self.surname}'
@@ -17,6 +18,7 @@ class Student(models.Model):
     surname = models.CharField(max_length=100)
     jmbg = models.CharField(max_length=20)
     indexNumber = models.CharField(max_length=50)
+    image = models.ImageField(blank=True, upload_to='images')
 
     def __str__(self) -> str:
         return f'{self.name} - {self.surname} - {self.indexNumber}'

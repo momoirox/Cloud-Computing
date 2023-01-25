@@ -12,3 +12,4 @@ class RegistrationProfessorForm(forms.Form):
     name = forms.CharField(label="Professor's name", max_length=60)
     surname = forms.CharField(label="Professor's surname", max_length=100)
     jmbg = forms.CharField(label="JMBG", max_length=20)
+
