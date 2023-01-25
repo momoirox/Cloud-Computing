@@ -13,9 +13,13 @@
     </head>
     <body>
     <div class="container">
+    <div class="screen">
+        <h1 style="display: flex; align-items: center;justify-content: center;color: white;margin-top: 100px;"> Register Students </h1>
+    </div>
         <div class="screen">
             <div class="screen__content">
-                <form class="login" action="{% url 'register' %}" method="POST">
+
+                <form class="login" action="{% url 'students' %}" method="POST">
                     {% csrf_token %}
                     
                     <div class="login__field">

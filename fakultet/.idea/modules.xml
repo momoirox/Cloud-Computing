@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/fakultet.iml" filepath="$PROJECT_DIR$/.idea/fakultet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../fakultet_ftn/.idea/fakultet_ftn.iml" filepath="$PROJECT_DIR$/../fakultet_ftn/.idea/fakultet_ftn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../fakultet_pravni/.idea/fakultet_pravni.iml" filepath="$PROJECT_DIR$/../fakultet_pravni/.idea/fakultet_pravni.iml" />
+    </modules>
+  </component>
+</project>

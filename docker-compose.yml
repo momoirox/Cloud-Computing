@@ -1,0 +1,54 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=uns
+    ports:
+      - "9090:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  pmf:
+    container_name: pmf
+    build: ./fakultet
+    restart: on-failure
+    ports:
+      - "8000:8000"
+  
+  ftn:
+    container_name: ftn
+    build: ./fakultet_ftn
+    restart: on-failure
+    ports:
+      - "8001:8000"
+  
+  pravni:
+    container_name: pravni
+    build: ./fakultet_pravni
+    restart: on-failure
+    ports:
+      - "8002:8000"
+
+  uns:
+    container_name: uns
+    build: ./uns
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/uns
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+      - SPRING_JPA_DATABASE-PLATFORM=org.hibernate.dialect.PostgreSQLDialect
