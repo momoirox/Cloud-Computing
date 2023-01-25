@@ -2,7 +2,7 @@ FROM python:3.10
 
 WORKDIR /app
 
-COPY ./fakultet_fnt .
+COPY ./fakultet_ftn .
 
 RUN pip install -r requirements.txt
 
