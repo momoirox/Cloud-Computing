@@ -36,8 +36,7 @@ services:
       - "8002:8000"
 
   uns:
-    #image: momoirox/uns
-    build: ./uns
+    image: momoirox/uns
     container_name: uns
     restart: on-failure
     ports:
