@@ -14,8 +14,7 @@ jobs:
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Build the docker image uns
-        run: docker build ./uns -t momoirox/uns
-##        -t "momoirox/uns" -f uns/Dockerfile
+        run: docker build . -t "momoirox/uns" -f uns/Dockerfile
       - name: Docker push uns
         run: docker push momoirox/uns
       - name: Build the docker image pmf
