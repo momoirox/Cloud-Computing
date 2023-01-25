@@ -17,6 +17,8 @@ services:
   pmf:
     image: momoirox/pmf
     container_name: pmf
+    volumes:
+      - ./images_pmf:/app/uploads/images
     restart: on-failure
     ports:
       - "8000:8000"
@@ -24,6 +26,8 @@ services:
   ftn:
     image: momoirox/ftn
     container_name: ftn
+    volumes:
+      - ./images_ftn:/app/uploads/images
     restart: on-failure
     ports:
       - "8001:8000"
@@ -31,6 +35,8 @@ services:
   pravni:
     image: momoirox/pravni
     container_name: pravni
+    volumes:
+      - ./images_pravni:/app/uploads/images
     restart: on-failure
     ports:
       - "8002:8000"
@@ -52,3 +58,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
       - SPRING_JPA_DATABASE-PLATFORM=org.hibernate.dialect.PostgreSQLDialect
+volumes:
+  images_pmf:
+  images_ftn:
+  images_pravni:
