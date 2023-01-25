@@ -41,12 +41,12 @@ services:
     ports:
       - "8002:8000"
 
-  uns:
+  uns1:
     image: momoirox/uns
-    container_name: uns
+    container_name: uns1
     restart: on-failure
     ports:
-      - "8080:8080"
+      - "8081:8080"
     depends_on:
       db:
         condition: service_healthy
@@ -58,6 +58,33 @@ services:
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
       - SPRING_JPA_DATABASE-PLATFORM=org.hibernate.dialect.PostgreSQLDialect
+      
+  uns2:
+    image: momoirox/uns
+    container_name: uns2
+    restart: on-failure
+    ports:
+      - "8082:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/uns
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+      - SPRING_JPA_DATABASE-PLATFORM=org.hibernate.dialect.PostgreSQLDialect
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - uns1
+      - uns2
+    ports:
+      - "8080:80"
 volumes:
   images_pmf:
   images_ftn:

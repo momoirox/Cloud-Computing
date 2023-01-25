@@ -37,7 +37,7 @@ def professors(request):
                 "lastName": "%s" % professor['surname'],
                 "jmbg": "%s" % professor['jmbg'],
             }
-            response = requests.post('http://uns:8080/professors', headers={'Content-Type': 'application/json'},
+            response = requests.post('http://localhost:8080/professors', headers={'Content-Type': 'application/json'},
                                      json=body)
             try:
                 if response.status_code == 200:
@@ -82,7 +82,7 @@ def index(request):
                 "lastName": "%s" % student['surname'],
                 "jmbg": "%s" % student['jmbg'],
             }
-            response = requests.post('http://uns:8080/students', headers={'Content-Type': 'application/json'},
+            response = requests.post('http://localhost:8080/students', headers={'Content-Type': 'application/json'},
                                      json=body)
             try:
                 if response.status_code == 200:
