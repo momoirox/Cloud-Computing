@@ -13,8 +13,8 @@ jobs:
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-	  docker scan --file Dockerfile uns/Dockerfile
-
+      - name: Scan 
+        run: docker scan --file Dockerfile uns/Dockerfile
       - name: Build the docker image uns
         run: docker build . -t "momoirox/uns" -f uns/Dockerfile
       - name: Docker push uns
