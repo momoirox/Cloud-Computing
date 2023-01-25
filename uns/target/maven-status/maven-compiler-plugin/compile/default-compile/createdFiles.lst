@@ -1,0 +1,11 @@
+com\project\uns\model\Student.class
+com\project\uns\services\StudentService.class
+com\project\uns\model\Professor.class
+com\project\uns\controllers\ProfessorController.class
+com\project\uns\services\ProfessorService.class
+com\project\uns\repository\ProfessorRepository.class
+com\project\uns\repository\StudentRepository.class
+com\project\uns\mapper\Mapper.class
+com\project\uns\UnsApplication.class
+com\project\uns\controllers\StudentController.class
+com\project\uns\dto\RegisterDto.class
