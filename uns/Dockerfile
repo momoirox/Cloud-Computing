@@ -1,5 +1,5 @@
 FROM openjdk:19
 EXPOSE 8080 
 ARG JAR_FILE=/target/uns-0.0.1-SNAPSHOT.jar
-ADD target/${JAR_FILE} app.jar
+ADD uns/${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
