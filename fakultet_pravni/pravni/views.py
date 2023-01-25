@@ -64,7 +64,7 @@ def index(request):
         })
 
     elif request.method == 'POST':
-        registration_form = RegistrationStudentForm(request.POST)
+        registration_form = RegistrationStudentForm(request.POST, request.FILES)
 
         if registration_form.is_valid():
             student = registration_form.cleaned_data
@@ -73,7 +73,8 @@ def index(request):
                 name=student['name'],
                 surname=student['surname'],
                 jmbg=student['jmbg'],
-                indexNumber=student['indexNumber']
+                indexNumber=student['indexNumber'],
+                image=student['image']
             )
 
             body = {
