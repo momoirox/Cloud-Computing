@@ -15,10 +15,10 @@ jobs:
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - name: Build the docker image uns
-        run: docker build . -t "momoirox/uns" -f uns/Dockerfile
-      - name: Docker push uns
-        run: docker push momoirox/uns
+      #- name: Build the docker image uns
+      #  run: docker build . -t "momoirox/uns" -f uns/Dockerfile
+      #- name: Docker push uns
+      #  run: docker push momoirox/uns
       - name: Build the docker image pmf
         run: docker build . -t "momoirox/pmf" -f fakultet/Dockerfile
       - name: Docker push pmf
