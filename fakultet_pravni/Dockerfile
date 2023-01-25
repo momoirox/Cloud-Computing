@@ -2,7 +2,7 @@ FROM python:3.10
 
 WORKDIR /app
 
-COPY	. .
+COPY ./fakultet_pravni .
 
 RUN pip install -r requirements.txt
 
