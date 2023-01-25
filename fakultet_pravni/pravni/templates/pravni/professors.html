@@ -19,7 +19,7 @@
         <div class="screen">
             <div class="screen__content">
 
-                <form class="login" action="{% url 'professors' %}" method="POST">
+                <form class="login" action="{% url 'professors' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     <div class="login__field">
@@ -52,6 +52,11 @@
                             placeholder="JMBG">
                          </i>
                     </div>
+
+                    <div class="login__field">
+                        <input type="file" id="image" name="image" accept="image/*" id="id_image">
+                    </div>
+
                     <button class="button login__submit">
                         <span class="button__text">Register now </span>
                         <i class="button__icon fas fa-chevron-right"></i>

@@ -20,7 +20,7 @@ def professors(request):
         })
 
     elif request.method == 'POST':
-        registration_form = RegistrationProfessorForm(request.POST)
+        registration_form = RegistrationProfessorForm(request.POST, request.FILES)
 
         if registration_form.is_valid():
             professor = registration_form.cleaned_data
@@ -29,6 +29,7 @@ def professors(request):
                 name=professor['name'],
                 surname=professor['surname'],
                 jmbg=professor['jmbg'],
+                image=professor["image"]
             )
 
             body = {
@@ -63,16 +64,17 @@ def index(request):
         })
 
     elif request.method == 'POST':
-        registration_form = RegistrationStudentForm(request.POST)
+        registration_form = RegistrationStudentForm(request.POST, request.FILES)
 
         if registration_form.is_valid():
             student = registration_form.cleaned_data
-
+            print(student.get('image'))
             st = Student(
                 name=student['name'],
                 surname=student['surname'],
                 jmbg=student['jmbg'],
-                indexNumber=student['indexNumber']
+                indexNumber=student['indexNumber'],
+                image=student["image"]
             )
 
             body = {
@@ -80,7 +82,7 @@ def index(request):
                 "lastName": "%s" % student['surname'],
                 "jmbg": "%s" % student['jmbg'],
             }
-            response = requests.post('http://uns:8080/students', headers={'Content-Type': 'application/json'},
+            response = requests.post('http://localhost:8080/students', headers={'Content-Type': 'application/json'},
                                      json=body)
             try:
                 if response.status_code == 200:
