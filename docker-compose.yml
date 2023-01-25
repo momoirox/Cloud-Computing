@@ -15,29 +15,29 @@ services:
       retries: 5
 
   pmf:
+    image: momoirox/pmf
     container_name: pmf
-    build: ./fakultet
     restart: on-failure
     ports:
       - "8000:8000"
   
   ftn:
+    image: momoirox/ftn
     container_name: ftn
-    build: ./fakultet_ftn
     restart: on-failure
     ports:
       - "8001:8000"
   
   pravni:
+    image: momoirox/pravni
     container_name: pravni
-    build: ./fakultet_pravni
     restart: on-failure
     ports:
       - "8002:8000"
 
   uns:
+    image: momoirox/uns
     container_name: uns
-    build: ./uns
     restart: on-failure
     ports:
       - "8080:8080"

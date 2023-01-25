@@ -1,0 +1,32 @@
+name: Upload to DockerHub
+on:
+  push:
+    branches: ["master"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: docker login
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: Build the docker image uns
+        run: docker build . -t "momoirox/uns" -f uns/Dockerfile
+      - name: Docker push uns
+        run: docker push momoirox/uns
+      - name: Build the docker image pmf
+        run: docker build . -t "momoirox/pmf" -f fakultet/Dockerfile
+      - name: Docker push pmf
+        run: docker push momoirox/pmf
+      - name: Build the docker image ftn
+        run: docker build . -t "momoirox/ftn" -f fakultet_ftn/Dockerfile
+      - name: Docker push ftn
+        run: docker push momoirox/ftn
+      - name: Build the docker image pravni
+        run: docker build . -t "momoirox/pravni" -f fakultet_pravni/Dockerfile
+      - name: Docker push pravni
+        run: docker push momoirox/pravni
+
